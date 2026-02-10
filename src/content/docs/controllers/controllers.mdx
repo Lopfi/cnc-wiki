@@ -1,0 +1,104 @@
+---
+title: Controllers
+description: A comparison of all available controllers for diy cnc machines
+---
+
+import { Table } from "flowbite-svelte";
+export const items = [
+    {
+        controller: "LinuxCNC",
+        capability: "Industrial-grade control, real-time, multi-axis",
+        upgradeability: "Very high (open source, broad hardware support)",
+        price: "Low-Medium (software free)",
+        complexity: "High"
+    },
+    {
+        controller: "GRBL",
+        capability: "Entry-level 3-axis milling/laser on MCU boards",
+        upgradeability: "Low-Medium (limited features, forks exist)",
+        price: "Very low",
+        complexity: "Low"
+    },
+    {
+        controller: "GRBL-HAL",
+        capability: "GRBL with HAL, broader MCU support, more advanced features",
+        upgradeability: "Medium (active development, more capable than GRBL)",
+        price: "Very low",
+        complexity: "Medium"
+    },
+    {
+        controller: "FluidNC",
+        capability: "ESP32 firmware with web UI, 3-6 axis",
+        upgradeability: "Medium (active development, flexible configs)",
+        price: "Very low",
+        complexity: "Low"
+    },
+    {
+        controller: "Mach3",
+        capability: "Mature Windows control, legacy parallel port support",
+        upgradeability: "Low (legacy product, aging ecosystem)",
+        price: "Low (license) + hardware",
+        complexity: "Medium"
+    },
+    {
+        controller: "Mach4",
+        capability: "Modernized Mach platform with plugins",
+        upgradeability: "Medium-High (plugin + controller ecosystem)",
+        price: "Medium-High",
+        complexity: "Medium-High"
+    },
+    {
+        controller: "Centroid Acorn",
+        capability: "Semi-pro controller with integrated hardware + UI",
+        upgradeability: "Medium (Centroid ecosystem, paid upgrades)",
+        price: "Medium",
+        complexity: "Medium"
+    },
+    {
+        controller: "Eding CNC",
+        capability: "PC-based control with dedicated motion controller hardware",
+        upgradeability: "Medium (controller ecosystem, paid features)",
+        price: "Medium-High",
+        complexity: "Medium"
+    },
+    {
+        controller: "Masso G3",
+        capability: "All-in-one industrial-style controller with touchscreen UI",
+        upgradeability: "Medium (Masso ecosystem, feature tiers)",
+        price: "High",
+        complexity: "Low-Medium"
+    }
+];
+
+The controller is the most essential part of any CNC machine. 
+It can dictate a lot of the other hardware components as well as software compatibility.
+
+Thats why picking the right controller depending on your requirements should be the first step in your build.
+
+
+
+## Comparison
+
+<Table items={items} hoverable={true}></Table>
+
+## LinuxCNC
+
+## GRBL / GRBL-HAL
+
+## FluidNC
+
+## Mach3
+
+## Mach4
+
+## Centroid Acorn
+
+## Specific Purpose
+
+Controllers that only support special machines. 
+
+### Lathe
+
+### CO2 Laser
+
+### Other
