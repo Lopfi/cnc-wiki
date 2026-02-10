@@ -1,68 +1,102 @@
 ---
-title: Controllers
+title: Overview
 description: A comparison of all available controllers for diy cnc machines
 ---
 
-import { Table } from "flowbite-svelte";
+import {
+    Table,
+    TableHead,
+    TableHeadCell,
+    TableBody,
+    TableBodyRow,
+    TableBodyCell
+} from "flowbite-svelte";
 export const items = [
     {
-        controller: "LinuxCNC",
+        controller: {
+            text: "LinuxCNC",
+            href: "../01_linuxcnc/"
+        },
         capability: "Industrial-grade control, real-time, multi-axis",
         upgradeability: "Very high (open source, broad hardware support)",
         price: "Low-Medium (software free)",
         complexity: "High"
     },
     {
-        controller: "GRBL",
+        controller: {
+            text: "GRBL",
+            href: "../02_grbl/"
+        },
         capability: "Entry-level 3-axis milling/laser on MCU boards",
         upgradeability: "Low-Medium (limited features, forks exist)",
         price: "Very low",
         complexity: "Low"
     },
     {
-        controller: "GRBL-HAL",
+        controller: {
+            text: "GRBL-HAL",
+            href: "../03_grbl-hal/"
+        },
         capability: "GRBL with HAL, broader MCU support, more advanced features",
         upgradeability: "Medium (active development, more capable than GRBL)",
         price: "Very low",
         complexity: "Medium"
     },
     {
-        controller: "FluidNC",
+        controller: {
+            text: "FluidNC",
+            href: "../04_fluidnc/"
+        },
         capability: "ESP32 firmware with web UI, 3-6 axis",
         upgradeability: "Medium (active development, flexible configs)",
         price: "Very low",
         complexity: "Low"
     },
     {
-        controller: "Mach3",
+        controller: {
+            text: "Mach3",
+            href: "../05_mach3/"
+        },
         capability: "Mature Windows control, legacy parallel port support",
         upgradeability: "Low (legacy product, aging ecosystem)",
         price: "Low (license) + hardware",
         complexity: "Medium"
     },
     {
-        controller: "Mach4",
+        controller: {
+            text: "Mach4",
+            href: "../06_mach4/"
+        },
         capability: "Modernized Mach platform with plugins",
         upgradeability: "Medium-High (plugin + controller ecosystem)",
         price: "Medium-High",
         complexity: "Medium-High"
     },
     {
-        controller: "Centroid Acorn",
+        controller: {
+            text: "Centroid Acorn",
+            href: "../07_centroid-acorn/"
+        },
         capability: "Semi-pro controller with integrated hardware + UI",
         upgradeability: "Medium (Centroid ecosystem, paid upgrades)",
         price: "Medium",
         complexity: "Medium"
     },
     {
-        controller: "Eding CNC",
+        controller: {
+            text: "Eding CNC",
+            href: "../08_eding-cnc/"
+        },
         capability: "PC-based control with dedicated motion controller hardware",
         upgradeability: "Medium (controller ecosystem, paid features)",
         price: "Medium-High",
         complexity: "Medium"
     },
     {
-        controller: "Masso G3",
+        controller: {
+            text: "Masso G3",
+            href: "../09_masso-g3/"
+        },
         capability: "All-in-one industrial-style controller with touchscreen UI",
         upgradeability: "Medium (Masso ecosystem, feature tiers)",
         price: "High",
@@ -79,19 +113,32 @@ Thats why picking the right controller depending on your requirements should be 
 
 ## Comparison
 
-<Table items={items} hoverable={true}></Table>
-
-## LinuxCNC
-
-## GRBL / GRBL-HAL
-
-## FluidNC
-
-## Mach3
-
-## Mach4
-
-## Centroid Acorn
+<Table hoverable={true}>
+    <TableHead>
+        <TableHeadCell>Controller</TableHeadCell>
+        <TableHeadCell>Capability</TableHeadCell>
+        <TableHeadCell>Upgradeability</TableHeadCell>
+        <TableHeadCell>Price</TableHeadCell>
+        <TableHeadCell>Complexity</TableHeadCell>
+    </TableHead>
+    <TableBody>
+        {items.map((item) => (
+            <TableBodyRow>
+                <TableBodyCell>
+                    {item.controller.href ? (
+                        <a href={item.controller.href}>{item.controller.text}</a>
+                    ) : (
+                        item.controller.text
+                    )}
+                </TableBodyCell>
+                <TableBodyCell>{item.capability}</TableBodyCell>
+                <TableBodyCell>{item.upgradeability}</TableBodyCell>
+                <TableBodyCell>{item.price}</TableBodyCell>
+                <TableBodyCell>{item.complexity}</TableBodyCell>
+            </TableBodyRow>
+        ))}
+    </TableBody>
+</Table>
 
 ## Specific Purpose
 
