@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@plugin "daisyui";
+
+/* Tailwind preflight removes default list markers; restore for docs content. */
+.sl-markdown-content ul,
+.sl-markdown-content ol {
+  padding-inline-start: 1.5rem;
+}
+
+.sl-markdown-content ul {
+  list-style: disc;
+}
+
+.sl-markdown-content ul ul {
+  list-style: circle;
+}
+
+.sl-markdown-content ul ul ul {
+  list-style: square;
+}
+
+.sl-markdown-content ol {
+  list-style: decimal;
+}
+
+.sl-markdown-content ol ol {
+  list-style: lower-alpha;
+}
+
+.sl-markdown-content ol ol ol {
+  list-style: lower-roman;
+}
+
+.sl-markdown-content li > ul,
+.sl-markdown-content li > ol {
+  margin-top: 0.25rem;
+}
+
+/* Restore visible underlines for markdown links. */
+.sl-markdown-content a {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+.sl-markdown-content a:hover,
+.sl-markdown-content a:focus-visible {
+  text-decoration-thickness: 2px;
+}

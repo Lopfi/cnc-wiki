@@ -1,0 +1,48 @@
+---
+type TagType =
+  | 'router'
+  | 'mill'
+  | 'lathe'
+  | 'laser'
+  | 'masso'
+  | 'conversion'
+  | 'grinder'
+  | 'robotic-arm'
+  | 'plasma'
+  | 'ethercat'
+  | 'linuxcnc'
+  | 'grbl'
+  | 'onlycnc'
+  | 'fiberlaser';
+
+interface Props {
+  type: TagType;
+  label?: string;
+  class?: string;
+}
+
+const { type, label, class: className } = Astro.props as Props;
+
+const tagConfig: Record<TagType, { label: string; className: string }> = {
+  router: { label: 'Router', className: 'badge-info text-info-content' },
+  mill: { label: 'Mill', className: 'badge-primary text-primary-content' },
+  lathe: { label: 'Lathe', className: 'badge-accent' },
+  laser: { label: 'Laser', className: 'badge-secondary text-secondary-content' },
+  masso: { label: 'Masso', className: 'bg-yellow-400 text-black border-yellow-400' },
+  conversion: { label: 'Conversion', className: 'bg-orange-400 text-black border-orange-400' },
+  grinder: { label: 'Grinder', className: 'bg-zinc-500 text-white border-zinc-500' },
+  'robotic-arm': { label: 'Robotic Arm', className: 'bg-pink-500 text-white border-pink-500' },
+  plasma: { label: 'Plasma', className: 'bg-red-500 text-white border-red-500' },
+  ethercat: { label: 'EtherCAT', className: 'bg-cyan-500 text-black border-cyan-500' },
+  linuxcnc: { label: 'LinuxCNC', className: 'bg-emerald-500 text-black border-emerald-500' },
+  grbl: { label: 'GRBL', className: 'bg-lime-500 text-black border-lime-500' },
+  onlycnc: { label: 'OnlyCNC', className: 'bg-violet-500 text-white border-violet-500' },
+  fiberlaser: { label: 'Fiber Laser', className: 'bg-fuchsia-500 text-white border-fuchsia-500' },
+};
+
+const config = tagConfig[type];
+---
+
+<span class:list={['badge badge-sm font-semibold', config.className, className]}>
+  {label ?? config.label}
+</span>
