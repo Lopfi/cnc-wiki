@@ -63,6 +63,70 @@ When one board is not enough, Mesa offers multiple expansion paths:
 SmartSerial is ideal for distributed panel and general I/O modules.
 For very high-speed motion signals and encoder-heavy workloads, direct FPGA I/O connectors are usually preferred.
 
+## Most common cards
+
+<div class="overflow-x-auto">
+  <table class="table table-pin-cols">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <td>FPGA</td>
+        <td>Host</td>
+        <td>26 Pin</td>
+        <td>50 Pin</td>
+        <td>DB25</td>
+        <td>Sserial</td>
+        <td>Step/Dir</td>
+        <td>Analog</td>
+        <td>Spindle</td>
+        <td>Enable</td>
+        <td>Encoder</td>
+        <td>DI</td>
+        <td>DI Typ</td>
+        <td>DO</td>
+        <td>DO Typ</td>
+        <td>AI</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><th>7i96S</th><td>true</td><td>eth</td><td>1</td><td>0</td><td>0</td><td>1</td><td>5</td><td>0</td><td>1</td><td>0</td><td>1</td><td>11</td><td>both</td><td>6</td><td>both</td><td>0</td></tr>
+      <tr><th>7i95T</th><td>true</td><td>eth</td><td>1</td><td>0</td><td>0</td><td>2</td><td>6</td><td>0</td><td>0</td><td>0</td><td>6</td><td>24</td><td>both</td><td>6</td><td>both</td><td>0</td></tr>
+      <tr><th>7i97T</th><td>true</td><td>eth</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>6</td><td>0</td><td>6</td><td>6</td><td>16</td><td>both</td><td>6</td><td>both</td><td>0</td></tr>
+      <tr><th>7i76EU</th><td>true</td><td>eth</td><td>2</td><td>0</td><td>0</td><td>1</td><td>5</td><td>0</td><td>1</td><td>0</td><td>1</td><td>28</td><td>both</td><td>16</td><td>both</td><td>4</td></tr>
+      <tr><th>7i92TH</th><td>true</td><td>eth</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i80HDT</th><td>true</td><td>eth</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i80db25</th><td>true</td><td>eth</td><td>0</td><td>0</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>6i24-16</th><td>true</td><td>pci</td><td>0</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>5i25T</th><td>true</td><td>pci</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>6i25</th><td>true</td><td>pcie</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i36</th><td>false</td><td>bus50pin</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>4</td><td>0</td><td>4</td><td>4</td><td>16</td><td>both</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i33TA</th><td>false</td><td>bus50pin</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>0</td><td>4</td><td>4</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i44</th><td>false</td><td>bus50pin</td><td>0</td><td>0</td><td>0</td><td>8</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i47</th><td>false</td><td>bus50pin</td><td>0</td><td>0</td><td>0</td><td>0</td><td>6</td><td>0</td><td>0</td><td>0</td><td>6</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i47S</th><td>false</td><td>bus50pin</td><td>0</td><td>0</td><td>0</td><td>0</td><td>6</td><td>0</td><td>1</td><td>0</td><td>6</td><td>0</td><td>na</td><td>3</td><td>both</td><td>0</td></tr>
+      <tr><th>7i48</th><td>false</td><td>bus50pin</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>6</td><td>0</td><td>0</td><td>6</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i65</th><td>false</td><td>bus50pin</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>8</td><td>0</td><td>8</td><td>8</td><td>4</td><td>both</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i74</th><td>false</td><td>db25</td><td>0</td><td>0</td><td>0</td><td>8</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i76</th><td>false</td><td>db25</td><td>0</td><td>0</td><td>0</td><td>1</td><td>5</td><td>0</td><td>1</td><td>0</td><td>1</td><td>32</td><td>sink</td><td>16</td><td>source</td><td>4</td></tr>
+      <tr><th>7i76D</th><td>false</td><td>db25</td><td>0</td><td>0</td><td>0</td><td>1</td><td>5</td><td>0</td><td>1</td><td>0</td><td>1</td><td>32</td><td>sink</td><td>16</td><td>sink</td><td>4</td></tr>
+      <tr><th>7i77</th><td>false</td><td>db25</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>6</td><td>0</td><td>6</td><td>6</td><td>32</td><td>sink</td><td>16</td><td>source</td><td>4</td></tr>
+      <tr><th>7i77D</th><td>false</td><td>db25</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>6</td><td>0</td><td>6</td><td>6</td><td>32</td><td>sink</td><td>16</td><td>sink</td><td>4</td></tr>
+      <tr><th>7i78</th><td>false</td><td>db25</td><td>0</td><td>0</td><td>0</td><td>1</td><td>4</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i85S</th><td>false</td><td>db25</td><td>0</td><td>0</td><td>0</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>4</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i88</th><td>false</td><td>db25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>8</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i89</th><td>false</td><td>db25</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>8</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+      <tr><th>7i73</th><td>false</td><td>sserial</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>24</td><td>both</td><td>22</td><td>both</td><td>8</td></tr>
+      <tr><th>7i84</th><td>false</td><td>sserial</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>32</td><td>sink</td><td>16</td><td>source</td><td>4</td></tr>
+      <tr><th>7i84D</th><td>false</td><td>sserial</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>32</td><td>sink</td><td>16</td><td>sink</td><td>4</td></tr>
+      <tr><th>7i87</th><td>false</td><td>sserial</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>na</td><td>0</td><td>na</td><td>8</td></tr>
+      <tr><th>7iA0</th><td>false</td><td>sserial</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>48</td><td>both</td><td>24</td><td>both</td><td>4</td></tr>
+      <tr><th>7I90HD</th><td>true</td><td>spi</td><td>0</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>na</td><td>0</td><td>na</td><td>0</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+
 ## Typical example configuration (3-axis mill)
 
 Example requirements:

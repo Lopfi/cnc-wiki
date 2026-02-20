@@ -48,3 +48,10 @@
 .sl-markdown-content a:focus-visible {
   text-decoration-thickness: 2px;
 }
+
+@layer starlight.content {
+    .sl-markdown-content .table :is(th:first-child, td:first-child):not(:where(.not-content *)) {
+    padding-inline-start: 1rem !important;
+    padding-inline-end: 1.25rem;
+    }
+}
