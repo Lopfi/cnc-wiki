@@ -1,0 +1,184 @@
+---
+title: Beckhoff EtherCAT Terminals
+description: Beckhoff EL terminals for LinuxCNC EtherCAT setups, with compatibility and I/O overview
+---
+
+Beckhoff EtherCAT terminals are a modular I/O system that works very well for LinuxCNC machines when you want industrial wiring, distributed I/O, and deterministic cycle timing.
+
+In a LinuxCNC setup, the common architecture is:
+
+1. LinuxCNC + EtherCAT master on the control PC.
+2. Beckhoff coupler (usually `EK1100`) as EtherCAT head.
+3. EL terminals for digital I/O, analog I/O, encoders, and motion.
+
+## Why use Beckhoff terminals
+
+- Robust DIN-rail hardware with clear electrical specs
+- Easy expansion by adding terminals to the right of the coupler
+- Good fit for mixed machines (limits, probes, spindle control, VFD I/O, toolchanger I/O)
+- Strong option for distributed control cabinets
+
+## LinuxCNC compatibility scope
+
+Compatibility in practice is split into two groups:
+
+1. Devices with dedicated support entries in `linuxcnc-ethercat` (`lcec`) device definitions.
+2. Additional EtherCAT/CiA402 devices that can work via custom PDO mapping.
+
+The table below lists Beckhoff terminals/couplers that are present in the LinuxCNC EtherCAT device list (checked on **February 20, 2026**).
+
+## List of compatible devices
+
+These are only the devices that are already implemented into linuxcnc-ethercat but you can add your own easily.
+See [LinuxCNC EtherCAT device list](https://github.com/linuxcnc-ethercat/linuxcnc-ethercat/blob/master/documentation/DEVICES.md) for more devices.
+
+<div class="w-145">
+    <table class="table table-pin-rows bg-base-200">
+    <thead>
+        <tr><th colspan="2">Couplers and Head Terminals</th></tr>
+        <tr>
+        <th>Terminal</th>
+        <th>Details (from official Description)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td><a href="http://www.beckhoff.com/EK1100">EK1100</a></td><td>EtherCAT Coupler, 0.5 A E-Bus</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EK1110">EK1110</a></td><td>EtherCAT extension terminal</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EK1814">EK1814</a></td><td>4 DI (24 V, 3 ms) + 4 DO (24 V, 0.5 A), 0.5 A E-Bus</td></tr>
+    </tbody>
+
+    <thead>
+        <tr><th colspan="2">Digital Inputs</th></tr>
+        <tr>
+        <th>Terminal</th>
+        <th>Details (from official Description)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td><a href="http://www.beckhoff.com/EL1002">EL1002</a></td><td>2-channel DI, 24 V, 3 ms</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL1004">EL1004</a></td><td>4-channel DI, 24 V, 3 ms</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL1008">EL1008</a></td><td>8-channel DI, 24 V, 3 ms</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL1012">EL1012</a></td><td>2-channel DI, 24 V, 10 us</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL1014">EL1014</a></td><td>4-channel DI, 24 V, 10 us</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL1018">EL1018</a></td><td>8-channel DI, 24 V, 10 us</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL1124">EL1124</a></td><td>4-channel DI, 5 V, 10 us, sensor power</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL1252">EL1252</a></td><td>2-channel fast DI, 24 V, 1 us, DC latch</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL1808">EL1808</a></td><td>8-channel DI, 24 V, 3 ms</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL1809">EL1809</a></td><td>16-channel DI, 24 V, 3 ms</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL1819">EL1819</a></td><td>16-channel DI, 24 V, 10 us</td></tr>
+    </tbody>
+
+    <thead>
+        <tr><th colspan="2">Mixed I/O and Digital Outputs</th></tr>
+        <tr>
+        <th>Terminal</th>
+        <th>Details (from official Description)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td><a href="http://www.beckhoff.com/EL1859">EL1859</a></td><td>8 DI (24 V, 3 ms) + 8 DO (24 V, 0.5 A)</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL2002">EL2002</a></td><td>2-channel DO, 24 V, 0.5 A</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL2004">EL2004</a></td><td>4-channel DO, 24 V, 0.5 A</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL2008">EL2008</a></td><td>8-channel DO, 24 V, 0.5 A</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL2024">EL2024</a></td><td>4-channel DO, 24 V, 2 A</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL2032">EL2032</a></td><td>2-channel DO, 24 V, 2 A, diagnostics</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL2202">EL2202</a></td><td>2-channel DO, 24 V, 0.5 A, DC Sync</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL2521">EL2521</a></td><td>1-channel pulse train output</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL2612">EL2612</a></td><td>2-channel relay CO, 125 V AC / 30 V DC</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL2622">EL2622</a></td><td>2-channel relay NO, 230 V AC / 30 V DC</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL2624">EL2624</a></td><td>4-channel relay NO, 125 V AC / 30 V DC</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL2808">EL2808</a></td><td>8-channel DO, 24 V, 0.5 A</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL2809">EL2809</a></td><td>16-channel DO, 24 V, 0.5 A</td></tr>
+    </tbody>
+
+    <thead>
+        <tr><th colspan="2">Analog Inputs</th></tr>
+        <tr>
+        <th>Terminal</th>
+        <th>Details (from official Description)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td><a href="http://www.beckhoff.com/EL3002">EL3002</a></td><td>2-channel AI, +/-10 V</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL3004">EL3004</a></td><td>4-channel AI, +/-10 V</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL3008">EL3008</a></td><td>8-channel AI, +/-10 V</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL3102">EL3102</a></td><td>2-channel AI, +/-10 V, differential</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL3112">EL3112</a></td><td>2-channel AI, 0-20 mA, differential</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL3122">EL3122</a></td><td>2-channel AI, 4-20 mA, differential</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL3202">EL3202</a></td><td>2-channel AI, PT100 (RTD)</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL3204">EL3204</a></td><td>4-channel AI, PT100 (RTD)</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL3403">EL3403</a></td><td>3-channel power measuring terminal (3-phase AC)</td></tr>
+    </tbody>
+
+    <thead>
+        <tr><th colspan="2">Analog Outputs</th></tr>
+        <tr>
+        <th>Terminal</th>
+        <th>Details (from official Description)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td><a href="http://www.beckhoff.com/EL4001">EL4001</a></td><td>1-channel AO, 0-10 V, 12-bit</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL4002">EL4002</a></td><td>2-channel AO, 0-10 V, 12-bit</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL4004">EL4004</a></td><td>4-channel AO, 0-10 V, 12-bit</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL4102">EL4102</a></td><td>2-channel AO, 0-10 V</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL4112">EL4112</a></td><td>2-channel AO, 0-20 mA</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL4122">EL4122</a></td><td>2-channel AO, 4-20 mA</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL4132">EL4132</a></td><td>2-channel AO, +/-10 V</td></tr>
+    </tbody>
+
+    <thead>
+        <tr><th colspan="2">Encoders and Feedback</th></tr>
+        <tr>
+        <th>Terminal</th>
+        <th>Details (from official Description)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td><a href="http://www.beckhoff.com/EL5002">EL5002</a></td><td>2-channel SSI encoder</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL5032">EL5032</a></td><td>2-channel EnDat encoder</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL5101">EL5101</a></td><td>1-channel encoder, 5 V</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL5151">EL5151</a></td><td>1-channel incremental encoder</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL5152">EL5152</a></td><td>2-channel incremental encoder</td></tr>
+    </tbody>
+
+    <thead>
+        <tr><th colspan="2">Safety and Motion Terminals</th></tr>
+        <tr>
+        <th>Terminal</th>
+        <th>Details (from official Description)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td><a href="http://www.beckhoff.com/EL6900">EL6900</a></td><td>TwinSAFE PLC</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL7031">EL7031</a></td><td>1-channel stepper motor output stage (24 V, 1.5 A)</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL7041">EL7041</a></td><td>1-channel stepper motor output stage (50 V, 5 A)</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL7211">EL7211</a></td><td>1-channel MDP742 servo motor output stage (50 V, 4.5 A RMS)</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL7342">EL7342</a></td><td>2-channel DC motor output stage (50 V, 3.5 A)</td></tr>
+        <tr><td><a href="http://www.beckhoff.com/EL7411">EL7411</a></td><td>BLDC terminal with incremental encoder/Hall, 50 V DC, 4.5 A</td></tr>
+    </tbody>
+    </table>
+</div>
+
+## Practical selection guide
+
+For most LinuxCNC retrofit/new-build machines, a practical Beckhoff stack often starts like this:
+
+1. `EK1100` coupler
+2. `EL1008` or `EL1809` for machine inputs
+3. `EL2008` or `EL2809` for outputs
+4. `EL5101`/`EL5151` for encoder feedback (if needed)
+5. `EL4002`/`EL4102` for analog command outputs (e.g. spindle/VFD)
+6. `EL7031`/`EL7041` only if you want integrated terminal-level stepper drive
+
+## Notes and caveats
+
+- Always verify the exact order code (for example `-0010`, `-0052`, `-9415`) because electrical capability can differ from the base model.
+- For motion terminals (stepper/servo), check cycle time and PDO mapping in your final LinuxCNC config before buying hardware in volume.
+- Safety terminals (`EL69xx`) are not a shortcut for machine safety compliance; they require proper safety engineering.
+
+## References
+
+- [LinuxCNC EtherCAT device list (DEVICES.md)](https://github.com/linuxcnc-ethercat/linuxcnc-ethercat/blob/master/documentation/DEVICES.md)
+- [LinuxCNC EtherCAT project](https://github.com/linuxcnc-ethercat/linuxcnc-ethercat)
+- [Beckhoff EtherCAT Terminals overview](https://www.beckhoff.com/en-en/products/i-o/ethercat-terminals/)
