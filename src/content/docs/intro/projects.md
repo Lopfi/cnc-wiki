@@ -7,5 +7,3 @@ description: A curated list of existing CNC builds to follow or use as a startin
 
 ## Mostly Printed CNC
 
-- test
-- hello

@@ -1,0 +1,99 @@
+---
+title: Mesa Cards
+description: What Mesa cards do, how to choose them, and how to build a practical card stack
+---
+
+Mesa cards are motion-control and I/O interface boards commonly used with LinuxCNC.
+They sit between the control PC and machine hardware like drives, encoders, limits, relays, and panel inputs.
+
+The short version: if you want flexible, real-time capable machine control with industrial-style wiring options, Mesa is one of the strongest ecosystems in the LinuxCNC world.
+
+## What Mesa cards are used for
+
+A LinuxCNC PC is excellent at planning motion, running UI logic, and coordinating machine behavior.
+Mesa hardware handles the time-critical electrical side:
+
+- generating deterministic step/dir pulses
+- reading fast encoder feedback
+- switching and sampling machine I/O
+- isolating the PC from direct field wiring
+
+Most Mesa designs are FPGA-based. That FPGA logic is a key reason they perform reliably at high pulse rates and low jitter, even on modest PCs.
+
+## Main card vs daughter cards
+
+In most setups you start with one **main card** that connects to the PC and hosts the real-time FPGA interface.
+You then add **daughter cards** when you need more I/O or specialized functions.
+
+A practical way to size a system:
+
+1. Count axis outputs and drive signal type (step/dir, +/-10V analog, or serial drive protocol).
+2. Count feedback channels (encoders, spindle encoder, handwheel/MPG).
+3. Count field I/O (limits, probes, estop chain, coolant, lube, lights, tool changer signals).
+4. Add 20-30% headroom for future additions.
+
+## PC connection options
+
+Mesa cards are typically connected to LinuxCNC in one of these ways:
+
+### Ethernet
+
+Most common for new builds.
+Easy physical wiring and good performance for the majority of machines.
+In practice, many builders dedicate one NIC port to the Mesa link.
+
+### PCI / PCIe
+
+Still valid and often very fast, but less convenient on modern small-form-factor PCs.
+Good option when you have compatible hardware and want an internal card install.
+
+### SPI
+
+Relevant for Raspberry Pi style setups.
+Useful for compact systems, but you should still treat real-time tuning and EMI protection seriously.
+
+## Expansion interfaces between cards
+
+When one board is not enough, Mesa offers multiple expansion paths:
+
+- `50-pin`: high-density ribbon style expansion with broad signal access
+- `DB25` / `26-pin compatible`: simpler connector format with fewer lines
+- `SmartSerial (SSerial)`: Mesa serial field bus (often over RJ45 cabling, but not Ethernet networking)
+
+SmartSerial is ideal for distributed panel and general I/O modules.
+For very high-speed motion signals and encoder-heavy workloads, direct FPGA I/O connectors are usually preferred.
+
+## Typical example configuration (3-axis mill)
+
+Example requirements:
+
+- 3 axes on step/dir drives
+- spindle speed command (0-10V)
+- linear scale or encoder feedback
+- coolant/lube/light/tool-clamp relays
+- operator panel with buttons and handwheel
+
+One common approach is:
+
+1. Main card: `7i96S` (Ethernet, step/dir-friendly, integrated field I/O, analog spindle output)
+2. Feedback expansion: `7i85S` (encoder-focused daughter card via DB25-style expansion)
+3. Panel/distributed I/O: `7i73` over SmartSerial
+
+This split keeps motion-critical signals on the fast core interface while moving operator I/O to a simple serial field link.
+
+## Common selection mistakes to avoid
+
+- Undersizing digital outputs for future accessories
+- Forgetting isolated input requirements for noisy industrial cabinets
+- Treating SmartSerial cabling as normal Ethernet switching traffic
+- Choosing only by card price and ignoring cabinet wiring effort
+
+If you are unsure, first choose by electrical interface and I/O map, then optimize price.
+
+## Mesa card configurator
+
+https://albersx.com/en/tools/mesa-config/
+
+## References
+- [ALBERS: The ultimate Mesa Card Guide for LinuxCNC](https://albersx.com/en/articles/mesa-card-guide-linuxcnc/)
+- [LinuxCNC Wiki](http://wiki.linuxcnc.org/cgi-bin/wiki.pl?Mesa_Cards)
